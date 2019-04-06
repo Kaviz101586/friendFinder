@@ -19,6 +19,7 @@ h3 {
     background-color: gray;
 }
 
-#match-image {
-    max-height:80%
-}
+.match-image {
+    height: 100%;
+    width: 100%;
+ }
