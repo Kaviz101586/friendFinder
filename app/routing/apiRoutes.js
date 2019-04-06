@@ -1,41 +1,30 @@
-var friendsData = require("../data/friends");;
+let friends = require('../data/friends');
 
-module.exports = function(app) {
- 
-  app.get("/api/friends", function(req, res) {
-    res.json(friendsData);
-  });
+module.exports = function (app) {
+    app.get('/api/friends', function (req, res) {
+        res.json(friends);
+    });
 
-  app.post("/api/friends", function(req, res) {
-    var newUser = req.body;
-    var userResponses = newUser.scores;
+    app.post('/api/friends', function (req, res) {
+        let newUser = req.body;
+        let newUserScores = newUser.scores;
+        let differenceArr = [];
 
-    var nameMatch = "";
-    var imgMatch = "";
-    var totalDiff = 100;
+        for (i=0; i<friends.length; i++) {
+            let difference = 0;
+            let currentFriend = friends[i];
 
-    for (var i = 0; i < friendsData.length; i++) {
-        var netDiff = 0; 
-
-        for (var j = 0; j <userResponses.length; j++) {
-            netDiff += Math.abs(friendsData[i].scores[j])
+            for (j=0; j<newUserScores.length; j++) {
+                let trueDiff = newUserScores[j] - currentFriend.scores[j];
+                trueDiff = Math.abs(trueDiff);
+                difference += trueDiff;
+            }
+            differenceArr.push(difference);
         }
-    }
 
+       let match = differenceArr.indexOf(Math.min(...differenceArr));
 
-
-
-
-
-})
-    if (tableData.length < 5) {
-      tableData.push(req.body);
-      res.json(true);
-    }
-    else {
-      waitListData.push(req.body);
-      res.json(false);
-    }
-  });
-
-};
+       matchedUsers = friends[match];
+       res.send(matchedUsers);
+    });
+}

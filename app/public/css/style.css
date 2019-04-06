@@ -1,0 +1,20 @@
+h1 {
+    font: 36px;
+    color: red;
+    text-align: center;
+}
+
+h2 {
+    font:30px;
+    color: blue;
+}
+
+h3 {
+    font: 26px;
+    color: green;
+    text-align: center;
+}
+
+.container, body {
+    background-color: gray;
+}
