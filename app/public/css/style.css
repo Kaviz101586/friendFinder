@@ -18,3 +18,7 @@ h3 {
 .container, body {
     background-color: gray;
 }
+
+#matchImg {
+    size: 60px,
+}
